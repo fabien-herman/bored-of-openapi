@@ -1,7 +1,7 @@
 {
-  "name": "codegen-diy",
+  "name": "bored-of-openapi",
   "version": "1.0.0",
-  "description": "Basic java code generator",
+  "description": "Basic code generator",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPLv3",
   "dependencies": {
     "handlebars": "^4.7.7",
     "js-yaml": "^4.1.0",
