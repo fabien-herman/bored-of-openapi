@@ -1,0 +1,25 @@
+{
+  "name": "codegen-diy",
+  "version": "1.0.0",
+  "description": "Basic java code generator",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc",
+    "generate": "npm run build && node build/index.js my-model.yaml gen/src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.7.7",
+    "js-yaml": "^4.1.0",
+    "node": "^16.17.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "4.0.5",
+    "@types/node": "^18.7.14",
+    "copyfiles": "^2.4.1",
+    "typescript": "^4.8.2"
+  }
+}

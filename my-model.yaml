@@ -1,0 +1,84 @@
+setting:
+  namespace: fr.demo
+  language: java8
+
+components:
+  models:
+    Amount:
+      namespace: common
+      properties:
+        value: java.math.BigDecimal
+        currency: String
+        currencyPrecision: Short
+
+    EftAuthorization:
+      namespace: eft
+      properties:
+        requestedAt: java.time.LocalDateTime
+        confirmedAt:
+          type: java.time.LocalDateTime
+          readonly: true
+        requestedAmount: $@common.Amount
+        confirmedAmount:
+          type: $@common.Amount
+        transactionId:
+          type: String
+          default: "A1234567"
+        extras:
+          type: java.util.Map<String,Object>
+          default: java.util.HashMap<String,Object>()
+
+    EftKeyCode:
+      namespace: eft
+      properties:
+        key: String
+        value: String
+
+    Type:
+      type: enum
+      namespace: eft
+      values:
+        - CONTACT_LESS
+        - SIM
+
+    EftRead:
+      namespace: eft
+      properties:
+        type: $Type
+        number: String
+        owner: String
+        trigram: String
+        extras: java.util.Map<String, String>
+
+    NfcRead:
+      namespace: nfc
+      properties:
+        tag: String
+        encryption: String
+        data: byte[]
+
+    NfcWrite:
+      namespace: nfc
+      properties:
+        data: byte[]
+
+    ScanBarcode:
+      namespace: scanner
+      properties:
+        symbology: String
+        value: String
+
+  dsl:
+    automation:
+      namespace: eft
+      functions:
+        order:
+          return: null
+          args:
+            - task: String
+            - parameters: java.util.Map<String,Object>
+        read:
+          return:
+          args:
+            - statusName: String
+            - parameters: java.util.Map<String,Object>
